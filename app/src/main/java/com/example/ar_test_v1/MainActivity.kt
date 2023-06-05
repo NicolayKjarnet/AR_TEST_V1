@@ -38,6 +38,9 @@ class MainActivity : AppCompatActivity() {
                 centerOrigin = Position(-0.5f)
 
             )
+
+            var text = modelNode.position.x + modelNode.position.y + modelNode.position.z;
+
             {
                 sceneView.planeRenderer.isVisible = true
             }
