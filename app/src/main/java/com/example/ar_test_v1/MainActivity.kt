@@ -64,18 +64,6 @@ class MainActivity : AppCompatActivity() {
     private fun placeModel() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
-
-        val anchorX = modelNode.position.x
-        val anchorY = modelNode.position.y
-
-        val layoutParams = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.WRAP_CONTENT,
-            RelativeLayout.LayoutParams.WRAP_CONTENT
-        )
-
-        layoutParams.leftMargin = anchorX.toInt()
-        layoutParams.topMargin = anchorY.toInt()
-
         textModel.text = "hello"
     }
 }
