@@ -1,9 +1,5 @@
 package com.example.ar_test_v1
 
-
-
-import android.content.Context
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isGone
@@ -33,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         placeButton.setOnClickListener {
             placeModel()
-
         }
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
