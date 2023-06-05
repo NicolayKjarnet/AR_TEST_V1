@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
             loadModelGlbAsync(
-                glbFileLocation = "models/sofa.glb",
+                glbFileLocation = "models/mario.glb",
                 scaleToUnits = 1f,
                 centerOrigin = Position(-0.5f)
 
