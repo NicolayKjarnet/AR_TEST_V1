@@ -2,10 +2,13 @@ package com.example.ar_test_v1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.view.isGone
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import dev.romainguy.kotlin.math.pointAt
+import dev.romainguy.kotlin.math.pow
 import io.github.sceneview.ar.ArSceneView
 import io.github.sceneview.ar.arcore.LightEstimationMode
 import io.github.sceneview.ar.node.ArModelNode
@@ -57,14 +60,16 @@ class MainActivity : AppCompatActivity() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
 
-        val anchorPosition = modelNode.worldPosition // Get the position of the anchor point
+        val anchorX = modelNode.position.x
+        val anchorY = modelNode.position.y
+
         val layoutParams = RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
-        layoutParams.leftMargin = anchorPosition.x.toInt()
-        layoutParams.topMargin = anchorPosition.y.toInt()
+
+        layoutParams.leftMargin = anchorX.toInt()
+        layoutParams.topMargin = anchorY.toInt()
 
         textModel.text = "hello"
         textModel.layoutParams = layoutParams
