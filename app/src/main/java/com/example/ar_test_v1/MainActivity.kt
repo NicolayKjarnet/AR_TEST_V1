@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         placeButton.setOnClickListener {
             placeModel()
+            textModel.text = generateRandomSentence()
         }
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
@@ -65,5 +66,16 @@ class MainActivity : AppCompatActivity() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
         textModel.text = "hello"
+    }
+
+    private fun generateRandomSentence(): String {
+        val sentences = listOf(
+            "This is sentence 1",
+            "Another sentence here",
+            "Sentence number three",
+            "Lorem ipsum dolor sit amet",
+            "Random sentence generator"
+        )
+        return sentences.random()
     }
 }
