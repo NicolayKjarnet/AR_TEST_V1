@@ -3,11 +3,10 @@ package com.example.ar_test_v1
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< HEAD
+
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
-=======
->>>>>>> origin/main
+
 import android.widget.TextView
 import androidx.core.view.isGone
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
