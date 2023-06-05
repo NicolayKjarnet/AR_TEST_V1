@@ -2,6 +2,8 @@ package com.example.ar_test_v1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.core.view.isGone
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import io.github.sceneview.ar.ArSceneView
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var sceneView: ArSceneView
     lateinit var placeButton: ExtendedFloatingActionButton
     private lateinit var modelNode: ArModelNode
+    lateinit var textModel: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +30,11 @@ class MainActivity : AppCompatActivity() {
 
         placeButton = findViewById(R.id.place)
 
+        textModel = findViewById(R.id.text)
+
         placeButton.setOnClickListener {
-            placeModel()
+
+                placeModel()
         }
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
@@ -36,23 +42,32 @@ class MainActivity : AppCompatActivity() {
                 glbFileLocation = "models/mario.glb",
                 scaleToUnits = 1f,
                 centerOrigin = Position(-0.5f)
-
-            )
-            {
+            ) {
                 sceneView.planeRenderer.isVisible = true
             }
             onAnchorChanged = {
                 placeButton.isGone = it != null
             }
-
         }
         sceneView.addChild(modelNode)
 
     }
 
-    private fun placeModel(){
+    private fun placeModel() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
 
+        val anchorPosition = modelNode.worldPosition // Get the position of the anchor point
+        val layoutParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
+        layoutParams.leftMargin = anchorPosition.x.toInt()
+        layoutParams.topMargin = anchorPosition.y.toInt()
+
+        textModel.text = "hello"
+        textModel.layoutParams = layoutParams
     }
+
 }
