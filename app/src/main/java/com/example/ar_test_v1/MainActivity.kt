@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
     private fun placeModel() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
-<<<<<<< HEAD
 
         val anchorX = modelNode.position.x
         val anchorY = modelNode.position.y
@@ -78,8 +77,6 @@ class MainActivity : AppCompatActivity() {
         layoutParams.leftMargin = anchorX.toInt()
         layoutParams.topMargin = anchorY.toInt()
 
-=======
->>>>>>> origin/main
         textModel.text = "hello"
     }
 }
