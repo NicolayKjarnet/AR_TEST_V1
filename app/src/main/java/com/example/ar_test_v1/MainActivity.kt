@@ -1,9 +1,13 @@
 package com.example.ar_test_v1
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< HEAD
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
+=======
+>>>>>>> origin/main
 import android.widget.TextView
 import androidx.core.view.isGone
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -36,8 +40,7 @@ class MainActivity : AppCompatActivity() {
         textModel = findViewById(R.id.text)
 
         placeButton.setOnClickListener {
-
-                placeModel()
+            placeModel()
         }
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
@@ -45,6 +48,8 @@ class MainActivity : AppCompatActivity() {
                 glbFileLocation = "models/mario.glb",
                 scaleToUnits = 1f,
                 centerOrigin = Position(-0.5f)
+
+
             ) {
                 sceneView.planeRenderer.isVisible = true
             }
@@ -56,9 +61,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun placeModel() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
+<<<<<<< HEAD
 
         val anchorX = modelNode.position.x
         val anchorY = modelNode.position.y
@@ -71,8 +78,8 @@ class MainActivity : AppCompatActivity() {
         layoutParams.leftMargin = anchorX.toInt()
         layoutParams.topMargin = anchorY.toInt()
 
+=======
+>>>>>>> origin/main
         textModel.text = "hello"
-        textModel.layoutParams = layoutParams
     }
-
 }
