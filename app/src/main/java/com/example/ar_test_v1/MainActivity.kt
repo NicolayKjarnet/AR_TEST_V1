@@ -92,36 +92,5 @@ class MainActivity : AppCompatActivity() {
         return sentences.random()
     }
 
-    fun screenshot(view: View) {
-        val rootView = window.decorView.rootView
-        val bitmap = getBitmapFromView(rootView)
 
-        try {
-            val contentResolver = applicationContext.contentResolver
-            val contentValues = ContentValues().apply {
-                put(MediaStore.MediaColumns.DISPLAY_NAME, "screenshot.png")
-                put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
-                put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
-            }
-
-            val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-            val outputStream = imageUri?.let { contentResolver.openOutputStream(it) }
-
-            outputStream?.use {
-                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, it)
-                Toast.makeText(this, "Screenshot saved", Toast.LENGTH_SHORT).show()
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-            Toast.makeText(this, "Failed to save screenshot", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun getBitmapFromView(view: View): Bitmap? {
-        val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        canvas.drawColor(Color.WHITE)
-        view.draw(canvas)
-        return bitmap
-    }
 }
