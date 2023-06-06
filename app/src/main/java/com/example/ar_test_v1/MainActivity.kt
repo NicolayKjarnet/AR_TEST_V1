@@ -1,18 +1,10 @@
 package com.example.ar_test_v1
 
 import android.annotation.SuppressLint
-import android.content.ContentValues
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isGone
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import io.github.sceneview.ar.ArSceneView
@@ -20,7 +12,6 @@ import io.github.sceneview.ar.arcore.LightEstimationMode
 import io.github.sceneview.ar.node.ArModelNode
 import io.github.sceneview.ar.node.PlacementMode
 import io.github.sceneview.math.Position
-import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,11 +37,17 @@ class MainActivity : AppCompatActivity() {
         placeButton.setOnClickListener {
             placeModel()
             textModel.text = generateRandomSentence()
+
+            placeButton.isGone = true
+            unAnchorButton.isGone = false
         }
 
         unAnchorButton.setOnClickListener {
             unAnchorModel()
+            placeButton.isGone = false
+            unAnchorButton.isGone = true
         }
+
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
             loadModelGlbAsync(
@@ -60,10 +57,14 @@ class MainActivity : AppCompatActivity() {
             ) {
                 sceneView.planeRenderer.isVisible = true
             }
-            onAnchorChanged = {
-                placeButton.isGone = it != null
-                unAnchorButton.isGone = it == null
-            }
+//            onAnchorChanged = {
+//                placeButton.isGone = it != null
+//                unAnchorButton.isGone = it == null
+//
+//            }
+
+
+
         }
         sceneView.addChild(modelNode)
     }
@@ -73,7 +74,12 @@ class MainActivity : AppCompatActivity() {
         modelNode.anchor()
         sceneView.planeRenderer.isVisible = false
         textModel.text = "hello"
+
+        if (modelNode.parent == null) {
+            sceneView.addChild(modelNode)
+        }
     }
+
 
     private fun unAnchorModel() {
         sceneView.removeChild(modelNode)
