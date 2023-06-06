@@ -9,7 +9,9 @@
     <io.github.sceneview.ar.ArSceneView
         android:id="@+id/sceneView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextureView
         android:id="@+id/textureView"
@@ -17,12 +19,11 @@
         android:layout_height="match_parent"
         android:visibility="gone" />
 
-    <Button
+    <ImageButton
         android:id="@+id/resetAnchor"
-        android:text="reset"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/chat_bubble_background"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/buttondesign"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="325dp"
         tools:layout_editor_absoluteY="467dp"
@@ -63,18 +64,17 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/place"
-        android:layout_width="271dp"
-        android:layout_height="186dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/buttondesign"
-        android:text="Place"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863" />
-
+        app:layout_constraintVertical_bias="0.717" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
