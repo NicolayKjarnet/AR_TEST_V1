@@ -11,11 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <TextureView
-        android:id="@+id/cameraView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true" />
+
 
     <Button
         android:id="@+id/resetAnchor"
