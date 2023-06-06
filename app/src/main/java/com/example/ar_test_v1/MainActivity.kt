@@ -96,19 +96,25 @@ class MainActivity : AppCompatActivity() {
         val rootView = window.decorView.rootView
         val bitmap = getBitmapFromView(rootView)
 
+        // Create a bitmap representing the camera feed
+        val cameraBitmap = getCameraBitmap()
+
+        // Overlay the camera bitmap on top of the screenshot bitmap
+        val mergedBitmap = mergeBitmaps(bitmap, cameraBitmap)
+
         try {
             val contentResolver = applicationContext.contentResolver
             val contentValues = ContentValues().apply {
                 put(MediaStore.MediaColumns.DISPLAY_NAME, "screenshot.png")
                 put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
-                put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+                put(MediaStore.MediaColumns.RELATIVE_PATH, "Pictures")
             }
 
             val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
             val outputStream = imageUri?.let { contentResolver.openOutputStream(it) }
 
             outputStream?.use {
-                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, it)
+                mergedBitmap?.compress(Bitmap.CompressFormat.PNG, 100, it)
                 Toast.makeText(this, "Screenshot saved", Toast.LENGTH_SHORT).show()
             }
         } catch (e: IOException) {
@@ -123,5 +129,39 @@ class MainActivity : AppCompatActivity() {
         canvas.drawColor(Color.WHITE)
         view.draw(canvas)
         return bitmap
+    }
+
+    private fun getCameraBitmap(): Bitmap? {
+        // Assuming you have a cameraView in your layout
+        val cameraView: View? = findViewById(R.id.cameraView)
+
+        // Get the dimensions of the camera view
+        val width = cameraView?.width ?: 0
+        val height = cameraView?.height ?: 0
+
+        if (width > 0 && height > 0) {
+            // Create a bitmap with the same dimensions as the camera view
+            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+            // Draw the camera view on the bitmap
+            val canvas = Canvas(bitmap)
+            cameraView?.draw(canvas)
+
+            return bitmap
+        }
+        return null
+    }
+
+    private fun mergeBitmaps(backgroundBitmap: Bitmap?, overlayBitmap: Bitmap?): Bitmap? {
+        if (backgroundBitmap == null || overlayBitmap == null) {
+            return null
+        }
+
+        val mergedBitmap = Bitmap.createBitmap(backgroundBitmap.width, backgroundBitmap.height, backgroundBitmap.config)
+        val canvas = Canvas(mergedBitmap)
+        canvas.drawBitmap(backgroundBitmap, 0f, 0f, null)
+        canvas.drawBitmap(overlayBitmap, 0f, 0f, null)
+
+        return mergedBitmap
     }
 }
