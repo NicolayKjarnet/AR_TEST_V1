@@ -10,7 +10,7 @@
     <!-- Wrap layout -->
     <item android:gravity="center">
         <bitmap
-            android:src="@drawable/s"
+            android:src="@drawable/screamface"
             android:gravity="center"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter" />
