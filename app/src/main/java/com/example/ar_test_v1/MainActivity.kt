@@ -92,10 +92,8 @@ class MainActivity : AppCompatActivity() {
         return sentences.random()
     }
 
-    fun screenshot(view: View) {
-        val rootView = window.decorView.rootView
-        val bitmap = getBitmapFromView(rootView)
 
+<<<<<<< HEAD
         // Create a bitmap representing the camera feed
         val cameraBitmap = getCameraBitmap()
 
@@ -164,4 +162,6 @@ class MainActivity : AppCompatActivity() {
 
         return mergedBitmap
     }
+=======
+>>>>>>> origin/main
 }
