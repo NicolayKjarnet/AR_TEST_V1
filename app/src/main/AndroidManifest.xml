@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
 
@@ -11,7 +10,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/screamface"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AR_TEST_V1"
@@ -30,6 +29,9 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCIhw3y9f96C-xVTvxuH4Z2oWC1b-jcQ_g" />
     </application>
 
 </manifest>
