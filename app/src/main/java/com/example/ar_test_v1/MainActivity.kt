@@ -152,15 +152,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap) {
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.screamface)
-        val screamIcon = BitmapDescriptorFactory.fromBitmap(bitmap)
+        val screamPerson = BitmapFactory.decodeResource(resources, R.drawable.screamface)
+        val munch = BitmapFactory.decodeResource(resources, R.drawable.munchicon)
+        val screamIcon = BitmapDescriptorFactory.fromBitmap(screamPerson)
+        val munchIcon = BitmapDescriptorFactory.fromBitmap(munch)
         googleMap = map
         val oslo = LatLng(59.9061, 10.7556)
         googleMap.addMarker(
             MarkerOptions()
                 .position(oslo)
-                .title("Marker in Oslo")
-                .icon(screamIcon)
+                .title("Munch museum")
+                .icon(munchIcon)
         )
         val personOnTheWay = LatLng(59.907829702, 10.737830382)
 
