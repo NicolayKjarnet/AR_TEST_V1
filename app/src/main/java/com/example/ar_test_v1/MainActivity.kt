@@ -1,10 +1,13 @@
 package com.example.ar_test_v1
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import io.github.sceneview.ar.ArSceneView
@@ -17,8 +20,8 @@ import io.github.sceneview.math.Position
 class MainActivity : AppCompatActivity() {
 
     lateinit var sceneView: ArSceneView
-    lateinit var placeButton: ExtendedFloatingActionButton
-    lateinit var unAnchorButton: Button
+    lateinit var placeButton: ImageButton
+    lateinit var unAnchorButton: ImageButton
     private lateinit var modelNode: ArModelNode
     lateinit var textModel: TextView
 
@@ -33,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         placeButton = findViewById(R.id.place)
         unAnchorButton = findViewById(R.id.resetAnchor)
         textModel = findViewById(R.id.text)
+
+
+
+
 
         placeButton.setOnClickListener {
             placeModel()
@@ -51,8 +58,8 @@ class MainActivity : AppCompatActivity() {
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
             loadModelGlbAsync(
-                glbFileLocation = "models/mario.glb",
-                scaleToUnits = 1f,
+                glbFileLocation = "models/person.glb",
+                scaleToUnits = 2f,
                 centerOrigin = Position(-0.5f)
             ) {
                 sceneView.planeRenderer.isVisible = true
