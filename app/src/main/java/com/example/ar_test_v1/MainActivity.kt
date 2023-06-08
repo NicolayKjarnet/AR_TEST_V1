@@ -150,6 +150,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val sentences = listOf(
                     "Did you know Munchs died in January 1944? " +
                     "He is buried in Vår Frelsers Gravlund (Our Savior's Cemetery) in Oslo.",
+                    "Did you know that Edvard Munch was born in December 1863 in Løten kommune? " +
+                    "The Family relocated to Oslo in 1864.",
+                    "Did you know Both Munchs mother and sister died from tuberculosis? several of his later paintings deal with the tragic theme," +
+                    " including Death in the Sickroom from 1893.",
+                    "Did you know Munch often painted several versions of his artworks? \n" +
+                    "In example Scream exists in four different versions.",
+                    "Did you know Munchs Scream is norway’s most expensive painting? It was last sold in 2012 for 120.000.000 USD."
+
+
         )
         return sentences.random()
     }
