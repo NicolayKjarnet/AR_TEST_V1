@@ -5,7 +5,7 @@
 
     <!-- Button icon -->
     <item
-        android:drawable="@drawable/screamfacecall"
+        android:drawable="@drawable/bluescreamface_call"
         android:gravity="center" />
 
 </layer-list>

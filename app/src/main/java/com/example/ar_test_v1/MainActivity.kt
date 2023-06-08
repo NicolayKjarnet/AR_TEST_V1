@@ -21,6 +21,7 @@ import io.github.sceneview.ar.node.ArModelNode
 import io.github.sceneview.ar.node.PlacementMode
 import io.github.sceneview.math.Position
 
+
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     lateinit var sceneView: ArSceneView
@@ -53,27 +54,36 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         placeButton.setOnClickListener {
             placeModel()
             textModel.text = generateRandomSentence()
-
             placeButton.isGone = true
             unAnchorButton.isGone = false
         }
 
         unAnchorButton.setOnClickListener {
             unAnchorModel()
+            placeModel()
+            textModel.text = generateRandomSentence()
             placeButton.isGone = false
             unAnchorButton.isGone = true
         }
 
+
         mapButton.setOnClickListener {
             if (isMapVisible) {
-                hideMap()
                 placeModel()
+                hideMap()
+                sceneView.addChild(modelNode)
+                textModel.isGone = false
             } else {
-                showMap()
                 unAnchorModel()
+                showMap()
+                sceneView.removeChild(modelNode)
+                textModel.isGone = true
 
             }
         }
+
+
+
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
             loadModelGlbAsync(
@@ -82,9 +92,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 centerOrigin = Position(-0.5f)
             ) {
                 sceneView.planeRenderer.isVisible = true
+                // Set the rotation to face along the negative Z-axis
+                val targetPosition = Position(0f, 0f, 1f) // Adjust the position if needed
+                lookAt(targetPosition)
             }
         }
         sceneView.addChild(modelNode)
+
     }
 
     override fun onResume() {
@@ -121,22 +135,21 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         if (modelNode.parent == null) {
             sceneView.addChild(modelNode)
         }
+
+
     }
 
     private fun unAnchorModel() {
         sceneView.removeChild(modelNode)
         sceneView.planeRenderer.isVisible = true
-        textModel.text = "hello"
+        placeModel()
 
     }
 
     private fun generateRandomSentence(): String {
         val sentences = listOf(
-            "This is sentence 1",
-            "Another sentence here",
-            "Sentence number three",
-            "Lorem ipsum dolor sit amet",
-            "Random sentence generator"
+                    "Did you know Munchs died in January 1944? " +
+                    "He is buried in Vår Frelsers Gravlund (Our Savior's Cemetery) in Oslo.",
         )
         return sentences.random()
     }
