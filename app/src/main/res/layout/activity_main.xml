@@ -14,6 +14,29 @@
         tools:layout_editor_absoluteX="-52dp"
         tools:layout_editor_absoluteY="-16dp" />
 
+    <ImageView
+        android:layout_width="73dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/munch_logo_banner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:layout_width="31dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/tooltip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
 
     <LinearLayout
         android:layout_width="256dp"
@@ -57,9 +80,9 @@
 
     <ImageButton
         android:id="@+id/resetAnchor"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
-        android:background="@drawable/screamcallicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/screamface_call"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,9 +93,9 @@
 
     <ImageButton
         android:id="@+id/place"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
-        android:background="@drawable/screamcallicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/screamface_call"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,8 +107,8 @@
 
     <ImageButton
         android:id="@+id/mapButton"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/bluemapbtn"
         android:textAlignment="center"
         android:textSize="20sp"
