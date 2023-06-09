@@ -28,17 +28,24 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var sceneView: ArSceneView
     lateinit var placeButton: ImageButton
     lateinit var unAnchorButton: ImageButton
+    lateinit var tooltipBtn: ImageButton
+    lateinit var tooltipText: TextView
     lateinit var mapButton: ImageButton
     lateinit var mapView: MapView
     lateinit var googleMap: GoogleMap
     private lateinit var modelNode: ArModelNode
     lateinit var textModel: TextView
     var isMapVisible = false
+    var isTooltipVisible = false
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         mapView = findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
@@ -53,6 +60,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         unAnchorButton = findViewById(R.id.resetAnchor)
         textModel = findViewById(R.id.text)
         mapButton = findViewById(R.id.mapButton)
+        tooltipText = findViewById(R.id.tooltipText)
+        tooltipBtn = findViewById(R.id.tooltipBtn)
 
         placeButton.setOnClickListener {
             placeModel()
@@ -67,6 +76,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             textModel.text = generateRandomSentence()
             placeButton.isGone = false
             unAnchorButton.isGone = true
+        }
+
+        tooltipBtn.setOnClickListener {
+            if (isTooltipVisible) {
+                hideTooltip()
+            } else {
+                showTooltip()
+            }
+
         }
 
 
@@ -151,15 +169,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun generateRandomSentence(): String {
         val sentences = listOf(
-                    "Did you know Munchs died in January 1944? " +
+            "Did you know Munchs died in January 1944? " +
                     "He is buried in Vår Frelsers Gravlund (Our Savior's Cemetery) in Oslo.",
-                    "Did you know that Edvard Munch was born in December 1863 in Løten kommune? " +
+            "Did you know that Edvard Munch was born in December 1863 in Løten kommune? " +
                     "The Family relocated to Oslo in 1864.",
-                    "Did you know Both Munchs mother and sister died from tuberculosis? several of his later paintings deal with the tragic theme," +
+            "Did you know Both Munchs mother and sister died from tuberculosis? several of his later paintings deal with the tragic theme," +
                     " including Death in the Sickroom from 1893.",
-                    "Did you know Munch often painted several versions of his artworks? \n" +
+            "Did you know Munch often painted several versions of his artworks? \n" +
                     "In example Scream exists in four different versions.",
-                    "Did you know Munchs Scream is norway’s most expensive painting? It was last sold in 2012 for 120.000.000 USD."
+            "Did you know Munchs Scream is norway’s most expensive painting? It was last sold in 2012 for 120.000.000 USD."
 
 
         )
@@ -174,6 +192,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun hideMap() {
         mapView.visibility = View.GONE
         isMapVisible = false
+    }
+
+    private fun hideTooltip() {
+        tooltipText.visibility = View.GONE
+        isTooltipVisible = false
+    }
+
+    private fun showTooltip() {
+        tooltipText.visibility = View.VISIBLE
+        isTooltipVisible = true
+
+
     }
 
     override fun onMapReady(map: GoogleMap) {
