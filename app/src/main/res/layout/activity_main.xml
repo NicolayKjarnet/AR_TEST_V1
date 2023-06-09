@@ -14,6 +14,10 @@
         tools:layout_editor_absoluteX="-52dp"
         tools:layout_editor_absoluteY="-16dp" />
 
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
     <ImageView
         android:layout_width="73dp"
         android:layout_height="23dp"
@@ -27,6 +31,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
+        android:id="@+id/tooltip"
         android:layout_width="31dp"
         android:layout_height="29dp"
         android:layout_marginTop="8dp"
