@@ -16,16 +16,14 @@
 
     <TextView
         android:id="@+id/tooltipText"
-        android:layout_width="169dp"
-        android:layout_height="104dp"
+        android:layout_width="189dp"
+        android:layout_height="127dp"
         android:background="@drawable/chat_bubble_background"
         android:paddingStart="10dp"
         android:paddingTop="8dp"
         android:paddingEnd="14dp"
         android:paddingBottom="8dp"
-        android:text="By using your camera you can let mr. Scream guide you to the museum.
-         You can tap on mr.
-        Scream to interact with him."
+        android:text="By using your camera you can let mr. Scream guide you to the museum. You can tap on mr. Scream to interact with him."
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="12sp"
