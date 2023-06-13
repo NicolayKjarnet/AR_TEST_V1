@@ -108,13 +108,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         modelNode = ArModelNode(PlacementMode.INSTANT).apply {
             loadModelGlbAsync(
-                glbFileLocation = "models/person.glb",
+                glbFileLocation = "models/scream-figure.glb",
                 scaleToUnits = 1f,
                 centerOrigin = Position(-0.5f)
             ) {
                 sceneView.planeRenderer.isVisible = true
-                // Set the rotation to face along the negative Z-axis
-                val targetPosition = Position(0f, 0f, 1f) // Adjust the position if needed
+                val targetPosition = Position(0f, 0f, 1f) 
                 lookAt(targetPosition)
             }
         }
