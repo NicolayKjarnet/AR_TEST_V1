@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 centerOrigin = Position(-0.5f)
             ) {
                 sceneView.planeRenderer.isVisible = true
-                val targetPosition = Position(0f, 0f, 1f) 
+                val targetPosition = Position(0f, 0f, 1f)
                 lookAt(targetPosition)
             }
         }
